@@ -16,11 +16,6 @@ namespace pokemon_tcg_sdk {
 
     static std::string API_KEY = POKEMON_TCG_SDK_API_KEY == NULL ? "" : POKEMON_TCG_SDK_API_KEY;
 
-    struct CURL_Memory {
-        char* response;
-        size_t size;
-    };
-
     class API {
         public:
             API();
