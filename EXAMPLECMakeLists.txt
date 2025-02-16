@@ -1,0 +1,10 @@
+cmake_minimum_required(VERSION 3.18)
+project(cppJsonParserEXAMPLE)
+
+find_library(JSON_PARSER NAMES cppJsonParser REQUIRED)
+
+add_executable(cppJsonParserEXAMPLE
+    main.cpp
+)
+
+target_link_libraries(cppJsonParserEXAMPLE PRIVATE ${JSON_PARSER})
