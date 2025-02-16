@@ -18,14 +18,14 @@ namespace pokemon_tcg_sdk {
 
     std::string Attack::to_string(){
         std::ostringstream out;
-        out << "\tAttack Cost:" << std::endl;
-        for (std::string energy : cost){
-            out << "\t\t" << energy << std::endl;
-        }
         out << "\tAttack Name: " << name << std::endl;
-        out << "\tAttack Text: " << text << std::endl;
-        out << "\tAttack Damage: " << damage << std::endl;
-        out << "\tAttack Converted Cost: " << convertedEnergyCost << std::endl;
+        out << "\t\tAttack Cost:" << std::endl;
+        for (std::string energy : cost){
+            out << "\t\t\t" << energy << std::endl;
+        }
+        out << "\t\tAttack Converted Cost: " << convertedEnergyCost << std::endl;
+        out << "\t\tAttack Damage: " << damage << std::endl;
+        out << "\t\tAttack Text: " << text << std::endl;
         return out.str();
     }
 
@@ -83,17 +83,46 @@ namespace pokemon_tcg_sdk {
         return out.str();
     }
 
+    std::string TcgPlayerPricesContainer::to_string(){
+        std::ostringstream out;
+        out << "\tTcgPlayer Normal Prices:" << std::endl << normal.to_string();
+        out << "\tTcgPlayer Holofoil Prices:" << std::endl << holofoil.to_string();
+        out << "\tTcgPlayer Reverse Holofoil Prices:" << std::endl << reverseHolofoil.to_string();
+        out << "\tTcgPlayer 1st Edition Holofoil Prices:" << std::endl << firstEditionHolofoil.to_string();
+        out << "\tTcgPlayer 1st Edition Normal Prices:" << std::endl << firstEditionNormal.to_string();
+        return out.str();
+    }
+
+    void from_json(const nlohmann::json& j, TcgPlayerPricesContainer& container){
+        nlohmann::json defaultNull = nlohmann::json::parse("{}");
+        j.value("normal", defaultNull).get_to(container.normal);
+        j.value("holofoil", defaultNull).get_to(container.holofoil);
+        j.value("reverseHolofoil", defaultNull).get_to(container.reverseHolofoil);
+        j.value("1stEditionHolofoil", defaultNull).get_to(container.firstEditionHolofoil);
+        j.value("1stEditionNormal", defaultNull).get_to(container.firstEditionNormal);
+    }
+
+    void to_json(nlohmann::json& j, const TcgPlayerPricesContainer& container){
+        j = nlohmann::json{
+            {"normal", container.normal},
+            {"holofoil", container.holofoil},
+            {"reverseHolofoil", container.reverseHolofoil},
+            {"1stEditionHolofoil", container.firstEditionHolofoil},
+            {"1stEditionNormal", container.firstEditionNormal},
+        };
+    }
+
     std::string TcgPlayer::to_string(){
         std::ostringstream out;
         out << "\tTcgPlayer URL: " << url << std::endl;
         out << "\tTcgPlayer Updated At: " << updatedAt << std::endl;
-        out << "\tTcgPlayer Prices:" << std::endl << prices.to_string();
+        out << prices.to_string();
         return out.str();
     }
 
     std::string Weakness::to_string(){
         std::ostringstream out;
-        out << "\tWeakness Name: " << name << std::endl;
+        out << "\tWeakness Type: " << type << std::endl;
         out << "\tWeakness Value: " << value << std::endl;
         return out.str();
     }
@@ -172,7 +201,7 @@ namespace pokemon_tcg_sdk {
         for (int num : nationalPokedexNumbers) {
             out << "\t" << num << std::endl;
         }
-        out << "Card Legalities:" << std::endl << legalities.to_string();
+        out << "Card Legalities:" << std::endl << legalities.to_string(false);
         out << "Card Regulation Mark: " << regulationMark << std::endl;
         out << "Card Images:" << std::endl << images.to_string();
         out << "Card TcgPlayer:" << std::endl << tcgplayer.to_string();

@@ -20,7 +20,7 @@ namespace pokemon_tcg_sdk {
             std::string to_string(bool card);
             NLOHMANN_DEFINE_TYPE_INTRUSIVE_WITH_DEFAULT(Set,
                 id, name, series, printedTotal, total, legalities,
-            ptcgoCode, images);
+            ptcgoCode, releaseDate, updatedAt, images);
         private:
             std::string id;
             std::string name;
@@ -29,6 +29,8 @@ namespace pokemon_tcg_sdk {
             int total;
             Legality legalities;
             std::string ptcgoCode;
+            std::string releaseDate;
+            std::string updatedAt;
             struct SetImages images;
     };
 };

@@ -31,11 +31,11 @@ namespace pokemon_tcg_sdk {
     NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE_WITH_DEFAULT(AncientTrait, name, text);
     
     struct Attack {
-        std::vector<std::string> cost;
         std::string name;
-        std::string text;
-        std::string damage;
+        std::vector<std::string> cost;
         int convertedEnergyCost;
+        std::string damage;
+        std::string text;
         std::string to_string();
     };
 
@@ -101,22 +101,34 @@ namespace pokemon_tcg_sdk {
 
     NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE_WITH_DEFAULT(TcgPlayerPrices, low, mid, high, market, directLow);
 
+    struct TcgPlayerPricesContainer {
+        struct TcgPlayerPrices normal;
+        struct TcgPlayerPrices holofoil;
+        struct TcgPlayerPrices reverseHolofoil;
+        struct TcgPlayerPrices firstEditionHolofoil;
+        struct TcgPlayerPrices firstEditionNormal;
+        std::string to_string();
+    };
+
+    void from_json(const nlohmann::json& j, TcgPlayerPricesContainer& tcgPlayer);
+    void to_json(nlohmann::json& j, const TcgPlayerPricesContainer& tcgPlayer);
+
     struct TcgPlayer {
         std::string url;
         std::string updatedAt;
-        struct TcgPlayerPrices prices;
+        TcgPlayerPricesContainer prices;
         std::string to_string();
     };
 
     NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE_WITH_DEFAULT(TcgPlayer, url, updatedAt, prices);
 
     struct Weakness {
-        std::string name;
+        std::string type;
         std::string value;
         std::string to_string();
     };
 
-    NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE_WITH_DEFAULT(Weakness, name, value);
+    NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE_WITH_DEFAULT(Weakness, type, value);
 
     class Card {
         public:

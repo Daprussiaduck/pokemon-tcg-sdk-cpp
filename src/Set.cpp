@@ -15,9 +15,11 @@ namespace pokemon_tcg_sdk {
         out << (card ? "\t" : "") << "Set Series: " << series << std::endl;
         out << (card ? "\t" : "") << "Set Printed Total: " << printedTotal << " cards" << std::endl;
         out << (card ? "\t" : "") << "Set Total: " << total << " cards" << std::endl;
-        out << (card ? "\t" : "") << "Set Legality: " << std::endl << legalities.to_string();
+        out << (card ? "\t" : "") << "Set Legality: " << std::endl << legalities.to_string(true);
         out << (card ? "\t" : "") << "Set Pokemon Trading Card Game Online Code: " << ptcgoCode << std::endl;
-        out << (card ? "\t" : "") << "Set Images:" << std::endl << images.to_string() << std::endl;
+        out << (card ? "\t" : "") << "Set Release Date: " << releaseDate << std::endl;
+        out << (card ? "\t" : "") << "Set Updated At: " << updatedAt << std::endl;
+        out << (card ? "\t" : "") << "Set Images:" << std::endl << images.to_string(card);
         return out.str();
     }
 };

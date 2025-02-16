@@ -9,7 +9,7 @@ namespace pokemon_tcg_sdk{
         std::string standard;
         std::string expanded;
         std::string unlimited;
-        std::string to_string();
+        std::string to_string(bool set);
     };
 
     NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE_WITH_DEFAULT(Legality, standard, expanded, unlimited);
