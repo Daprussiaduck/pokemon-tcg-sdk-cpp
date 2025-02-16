@@ -33,7 +33,7 @@
 
 # vscode
 .vscode
-pokemon-tck-sdk-cpp.code-workspace
+pokemon-tcg-sdk-cpp.code-workspace
 
 # cmake build
 build
