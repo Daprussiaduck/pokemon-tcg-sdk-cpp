@@ -11,5 +11,9 @@
 #include "Card.hpp"
 #include "Legalities.hpp"
 #include "Set.hpp"
+#include "Rarities.hpp"
+#include "SubTypes.hpp"
+#include "SuperTypes.hpp"
+#include "Types.hpp"
 
 #endif /*__POKEMON_TCG_SDK__*/

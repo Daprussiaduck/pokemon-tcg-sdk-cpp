@@ -24,7 +24,11 @@ add_library(${PROJECT_NAME} SHARED
     ${SRC_DIR}/pokemon-tcg-sdk.cpp
     ${SRC_DIR}/Card.cpp
     ${SRC_DIR}/Legalities.cpp
+    ${SRC_DIR}/Rarities.cpp
     ${SRC_DIR}/Set.cpp
+    ${SRC_DIR}/SubTypes.cpp
+    ${SRC_DIR}/SuperTypes.cpp
+    ${SRC_DIR}/Types.cpp
     ${SRC_DIR}/Api.cpp
     ${SRC_DIR}/api/Query.cpp
     
