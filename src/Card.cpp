@@ -146,6 +146,9 @@ namespace pokemon_tcg_sdk {
         return ret;
     }
 
+    
+    // Here
+
     std::string Card::to_string(){
         std::ostringstream out;
         out << "Card ID: " << id << std::endl;
