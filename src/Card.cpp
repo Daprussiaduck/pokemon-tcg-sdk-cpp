@@ -202,7 +202,6 @@ namespace pokemon_tcg_sdk {
         return resistances;
     }
 
-
     std::vector<std::string> Card::getRetreatCost(){
         return retreatCost;
     }
