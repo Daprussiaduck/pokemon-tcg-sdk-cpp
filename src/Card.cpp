@@ -146,8 +146,114 @@ namespace pokemon_tcg_sdk {
         return ret;
     }
 
+    std::string Card::getID(){
+        return id;
+    }
+
+    std::string Card::getName(){
+        return name;
+    }
+
+    std::vector<std::string> Card::getSubTypes(){
+        return subtypes;
+    }
+
+    std::string Card::getLevel(){
+        return level;
+    }
+
+    std::string Card::getHP(){
+        return hp;
+    }
+
+    std::vector<std::string> Card::getTypes(){
+        return types;
+    }
+
+    std::string Card::getEvolvesFrom(){
+        return evolvesFrom;
+    }
     
-    // Here
+    std::vector<std::string> Card::getEvolvesTo(){
+        return evolvesTo;
+    }
+
+    std::vector<std::string> Card::getRules(){
+        return rules;
+    }
+
+    AncientTrait Card::getAncientTrait(){
+        return ancientTrait;
+    }
+
+    std::vector<Ability> Card::getAbilities(){
+        return abilities;
+    }
+
+    std::vector<Attack> Card::getAttacks(){
+        return attacks;
+    }
+
+    std::vector<Weakness> Card::getWeaknesses(){
+        return weaknesses;
+    }
+
+    std::vector<Resistance> Card::getResistances(){
+        return resistances;
+    }
+
+
+    std::vector<std::string> Card::getRetreatCost(){
+        return retreatCost;
+    }
+
+    int Card::getConvertedRetreatCost(){
+        return convertedRetreatCost;
+    }
+
+    Set Card::getSet(){
+        return set;
+    }
+
+    std::string Card::getNumber(){
+        return number;
+    }
+
+    std::string Card::getArtist(){
+        return artist;
+    }
+
+    std::string Card::getRarity(){
+        return rarity;
+    }
+
+    std::string Card::getFlavorText(){
+        return flavorText;
+    }
+
+    std::vector<int> Card::getNationalPokedexNumbers(){
+        return nationalPokedexNumbers;
+    }
+
+    Legality Card::getLegalities(){
+        return legalities;
+    }
+
+    std::string Card::getRegulationMark(){
+        return regulationMark;
+    }
+
+    CardImages Card::getImages(){
+        return images;
+    }
+
+    TcgPlayer Card::getTcgPlayer(){
+        return tcgplayer;
+    }
+
+    CardMarket Card::getCardmarket(){
+        return cardmarket;
+    }
 
     std::string Card::to_string(){
         std::ostringstream out;

@@ -574,7 +574,7 @@ namespace pokemon_tcg_sdk {
             /**
              * Returns the TcgPlayer Information of the Card
              */
-            TcgPlayer getTcgplayer();
+            TcgPlayer getTcgPlayer();
 
             /**
              * Returns the Card Market Information of the Card
