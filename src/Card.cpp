@@ -127,9 +127,8 @@ namespace pokemon_tcg_sdk {
         return out.str();
     }
 
-    std::vector<Card> Card::all(API api){
-        std::vector<Card> ret;
-        return ret;
+    std::vector<Card> Card::all(API* api, std::string orderBy, std::string select){
+        return Query::all<Card>(api, POKEMON_TCG_SDK_CARDS_URL, orderBy, select);
     }
 
     Card Card::find(API* api, std::string id){
@@ -140,9 +139,19 @@ namespace pokemon_tcg_sdk {
                 nlohmann::json data = resp.at("data");
                 ret = data.template get<Card>();
             }    
-       } catch (nlohmann::json::basic_json::out_of_range ex){
+        } catch (nlohmann::json::basic_json::out_of_range ex){
             std::cout << "Data not found: " << ex.what() << std::endl; 
         }
+        return ret;
+    }
+
+    std::vector<Card> Card::where(API* api, std::string query, std::string orderBy){
+        std::vector<Card> ret;
+        return ret;
+    }
+
+    std::vector<Card> Card::where(API* api, nlohmann::json query){
+        std::vector<Card> ret;
         return ret;
     }
 

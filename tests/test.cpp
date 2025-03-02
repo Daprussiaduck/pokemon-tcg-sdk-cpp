@@ -17,6 +17,8 @@ int main(int argc, char** argv){
     //pokemon_tcg_sdk::Card xy1_1(&api);
     pokemon_tcg_sdk::Card xy1_1 = pokemon_tcg_sdk::Card::find(&api, "xy1-1");
     std::cout << xy1_1.to_string() << std::endl;
+    std::vector<pokemon_tcg_sdk::Card> yes = pokemon_tcg_sdk::Card::all(&api);
+    std::cout << yes.size() << std::endl;
     std::cout << "Main testing done." << std::endl;
     return 0;
 }

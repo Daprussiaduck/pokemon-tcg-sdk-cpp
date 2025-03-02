@@ -439,12 +439,24 @@ namespace pokemon_tcg_sdk {
     class Card {
         public:
             /**
-             * Returns all cards of  
+             * Returns all cards
              */
-            static std::vector<Card> all(API api);
+            static std::vector<Card> all(API* api, std::string orderBy = "", std::string select = "");
+
+            /**
+             * Returns the cards matching the provided ID
+             */
             static Card find(API* api, std::string id);
-            static std::vector<Card> where(API api, std::string query);
-            static std::vector<Card> where(API api, nlohmann::json query);
+
+            /**
+             * Returns the cards matching the provided query
+             */
+            static std::vector<Card> where(API* api, std::string query, std::string orderBy="");
+
+            /**
+             * Returns the cards matching the provided query
+             */
+            static std::vector<Card> where(API* api, nlohmann::json query);
             
             /**
              * Returns the ID of the Card

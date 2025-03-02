@@ -6,6 +6,6 @@ namespace pokemon_tcg_sdk {
             std::cout << "URL: " << url + id << std::endl;
             nlohmann::json response = api -> get(url + id, nlohmann::json::parse("{}"));
             return response;
-        }
+        }        
     };
 };
