@@ -8,6 +8,46 @@ namespace pokemon_tcg_sdk {
         return out.str();
     }
 
+    std::string Set::getID(){
+        return id;
+    }
+
+    std::string Set::getName(){
+        return name;
+    }
+
+    std::string Set::getSeries(){
+        return series;
+    }
+
+    int Set::getPrintedTotal(){
+        return printedTotal;
+    }
+
+    int Set::getTotal(){
+        return total;
+    }
+
+    Legality Set::getLegalities(){
+        return legalities;
+    }
+
+    std::string Set::getPTCGoCode(){
+        return ptcgoCode;
+    }
+
+    std::string Set::getReleaseDate(){
+        return releaseDate;
+    }
+
+    std::string Set::getUpdatedAt(){
+        return updatedAt;
+    }
+
+    SetImages Set::getImages(){
+        return images;
+    }
+
     std::string Set::to_string(bool card = false){
         std::ostringstream out;
         out << (card ? "\t" : "") << "Set ID: " << id << std::endl;
