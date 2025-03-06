@@ -1,5 +1,6 @@
 #include <pokemon-tcg-sdk.hpp>
 #include <iostream>
+#include <fstream>
 #include <cassert>
 #include <string>
 
@@ -19,6 +20,11 @@ int main(int argc, char** argv){
     std::cout << xy1_1.to_string() << std::endl;
     std::vector<pokemon_tcg_sdk::Card> yes = pokemon_tcg_sdk::Card::all(&api);
     std::cout << yes.size() << std::endl;
+    // std::ofstream test("../out.txt");
+    // for (pokemon_tcg_sdk::Card card : yes){
+    //     test << card.to_string() << std::endl;
+    // }
+    // test.close();
     std::cout << "Main testing done." << std::endl;
     return 0;
 }

@@ -120,6 +120,32 @@ namespace pokemon_tcg_sdk {
         return out.str();
     }
 
+    void from_json(const nlohmann::json &jsonData, TcgPlayerPrices &prices){
+        if (jsonData.contains("low") && !jsonData.at("low").is_null()){
+            prices.directLow = jsonData.value("low", 0.0);
+        }
+        if (jsonData.contains("mid") && !jsonData.at("mid").is_null()){
+            prices.directLow = jsonData.value("mid", 0.0);
+        }
+        if (jsonData.contains("high") && !jsonData.at("high").is_null()){
+            prices.directLow = jsonData.value("high", 0.0);
+        }
+        if (jsonData.contains("market") && !jsonData.at("market").is_null()){
+            prices.directLow = jsonData.value("market", 0.0);
+        }
+        if (jsonData.contains("directLow") && !jsonData.at("directLow").is_null()){
+            prices.directLow = jsonData.value("directLow", 0.0);
+        }
+    }
+
+    void to_json(nlohmann::json &jsonData, const TcgPlayerPrices &prices){
+        jsonData.at("low") = prices.low;
+        jsonData.at("mid") = prices.mid;
+        jsonData.at("high") = prices.high;
+        jsonData.at("market") = prices.market;
+        jsonData.at("directLow") = prices.directLow;
+    }
+
     std::string Weakness::to_string(){
         std::ostringstream out;
         out << "\tWeakness Type: " << type << std::endl;

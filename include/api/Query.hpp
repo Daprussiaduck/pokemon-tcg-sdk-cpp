@@ -27,29 +27,33 @@ namespace pokemon_tcg_sdk {
             int total = INT_MAX;
             int count = 0;
             int page = 1;
-            nlohmann::json resp = api -> get(url + "?page=" + std::to_string(page) + queryParams, nlohmann::json::parse("{}"));
             while (count < total) {
+                nlohmann::json resp = api -> get(url + "?page=" + std::to_string(page) + queryParams, nlohmann::json::parse("{}"));
                 try {
                     if (!resp.is_null()){
                         int addCount = resp.at("count");
                         nlohmann::json data = resp.at("data");
                         // std::cout << data<< std::endl;
                         for (nlohmann::json::iterator it = data.begin(); it != data.end(); ++it){
-                            std::cout << *it << std::endl;
+                            //std::cout << *it << std::endl;
                             ret.push_back(*it);
                         }
                         //ret.push_back(data.template get<T>());
                         if (total == INT_MAX){
-                            total = resp.at("total");
+                            total = resp.at("totalCount");
                         }
                         count += addCount;
+                        std::cout << "Found " << count << " out of " << total << " Cards in " << page << " pages." << std::endl;
                         page++;
-                    }    
+                    } else {
+                        break;
+                    }
                 } catch (nlohmann::json::basic_json::out_of_range ex){
                     std::cout << "Data not found: " << ex.what() << std::endl;
                     break;
                 }
             }
+            std::cout << "Found " << count << " out of " << total << " Cards" << std::endl;
             return ret;
         }
     };

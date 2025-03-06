@@ -88,7 +88,6 @@ namespace pokemon_tcg_sdk {
              */
             SetImages getImages();
 
-
             /**
              * Returns a string representing the Set
              */

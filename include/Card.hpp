@@ -328,7 +328,11 @@ namespace pokemon_tcg_sdk {
     /**
      * Defines the functions to interchange JSON to the TcgPlayerPrices structure and back
      */
-    NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE_WITH_DEFAULT(TcgPlayerPrices, low, mid, high, market, directLow);
+    // NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE_WITH_DEFAULT(TcgPlayerPrices, low, mid, high, market, directLow);
+
+    void to_json(nlohmann::json &jsonData, const TcgPlayerPrices &prices);
+
+    void from_json(const nlohmann::json &jsonData, TcgPlayerPrices &prices);
 
     /**
      * Structure to hold the prices subObject from TcgPlayer
