@@ -9,11 +9,44 @@ namespace pokemon_tcg_sdk {
         return out.str();
     }
 
+    void from_json(const nlohmann::json &json, Ability &ability){
+        if (json.contains("name") && !(json.at("name").is_null())){
+            ability.name = json.value("name", "");
+        }
+        if (json.contains("text") && !(json.at("text").is_null())){
+            ability.text = json.value("text", "");
+        }
+        if (json.contains("type") && !(json.at("type").is_null())){
+            ability.type = json.value("type", "");
+        }
+    }
+
+    void to_json(nlohmann::json &json, const Ability &ability){
+        json["name"] = ability.name;
+        json["text"] = ability.text;
+        json["type"] = ability.type;
+    }
+
     std::string AncientTrait::to_string(){
         std::ostringstream out;
         out << "\tAncient Trait Name: " << name << std::endl;
         out << "\tAncient Trait Text: " << text << std::endl;
         return out.str();
+    }
+
+    void from_json(const nlohmann::json &json, AncientTrait &ancientTrait){
+        if (json.contains("name") && !(json.at("name").is_null())){
+            ancientTrait.name = json.value("name", "");
+        }
+        if (json.contains("text") && !(json.at("text").is_null())){
+            ancientTrait.text = json.value("text", "");
+        }
+        
+    }
+
+    void to_json(nlohmann::json &json, const AncientTrait &ancientTrait){
+        json["name"] = ancientTrait.name;
+        json["text"] = ancientTrait.text;
     }
 
     std::string Attack::to_string(){
@@ -27,6 +60,32 @@ namespace pokemon_tcg_sdk {
         out << "\t\tAttack Damage: " << damage << std::endl;
         out << "\t\tAttack Text: " << text << std::endl;
         return out.str();
+    }
+
+    void from_json(const nlohmann::json &json, Attack &attack){
+        if (json.contains("name") && !(json.at("name").is_null())){
+            attack.name = json.value("name", "");
+        }
+        if (json.contains("cost") && !(json.at("cost").is_null())){
+            attack.cost = json.value("cost", std::vector<std::string>());
+        }
+        if (json.contains("convertedEnergyCost") && !(json.at("convertedEnergyCost").is_null())){
+            attack.convertedEnergyCost = json.value("convertedEnergyCost", 0);
+        }
+        if (json.contains("damage") && !(json.at("damage").is_null())){
+            attack.damage = json.value("damage", "");
+        }
+        if (json.contains("text") && !(json.at("text").is_null())){
+            attack.text = json.value("text", "");
+        }
+    }
+
+    void to_json(nlohmann::json &json, const Attack &attack){
+        json["name"] = attack.name;
+        json["cost"] = attack.cost;
+        json["convertedEnergyCost"] = attack.convertedEnergyCost;
+        json["damage"] = attack.damage;
+        json["text"] = attack.text;
     }
 
     std::string CardImages::to_string(){
@@ -93,17 +152,17 @@ namespace pokemon_tcg_sdk {
         return out.str();
     }
 
-    void from_json(const nlohmann::json& j, TcgPlayerPricesContainer& container){
+    void from_json(const nlohmann::json& json, TcgPlayerPricesContainer& container){
         nlohmann::json defaultNull = nlohmann::json::parse("{}");
-        j.value("normal", defaultNull).get_to(container.normal);
-        j.value("holofoil", defaultNull).get_to(container.holofoil);
-        j.value("reverseHolofoil", defaultNull).get_to(container.reverseHolofoil);
-        j.value("1stEditionHolofoil", defaultNull).get_to(container.firstEditionHolofoil);
-        j.value("1stEditionNormal", defaultNull).get_to(container.firstEditionNormal);
+        json.value("normal", defaultNull).get_to(container.normal);
+        json.value("holofoil", defaultNull).get_to(container.holofoil);
+        json.value("reverseHolofoil", defaultNull).get_to(container.reverseHolofoil);
+        json.value("1stEditionHolofoil", defaultNull).get_to(container.firstEditionHolofoil);
+        json.value("1stEditionNormal", defaultNull).get_to(container.firstEditionNormal);
     }
 
-    void to_json(nlohmann::json& j, const TcgPlayerPricesContainer& container){
-        j = nlohmann::json{
+    void to_json(nlohmann::json& json, const TcgPlayerPricesContainer& container){
+        json = nlohmann::json{
             {"normal", container.normal},
             {"holofoil", container.holofoil},
             {"reverseHolofoil", container.reverseHolofoil},

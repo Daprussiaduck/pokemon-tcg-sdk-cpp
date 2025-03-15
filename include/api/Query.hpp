@@ -18,8 +18,7 @@ namespace pokemon_tcg_sdk {
         std::vector<T> where(API api, std::string query, std::string url);
 
         template <typename T>
-        //std::vector<T> all(API* api, std::string url, std::string orderBy = "", std::string select = "");
-        std::vector<T> all(API* api, std::string url, std::string orderBy, std::string select){
+        std::vector<T> all(API* api, std::string url, std::string orderBy = "", std::string select = ""){
             std::vector<T> ret;
             std::string queryParams = "";
             queryParams += orderBy == "" ? "" : "&orderby=" + orderBy;

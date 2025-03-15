@@ -38,11 +38,16 @@ namespace pokemon_tcg_sdk {
          */
         std::string to_string();
     };
-
+    
     /**
-     * Defines the functions to interchange JSON to the Ability structure and back
+     * Converts the JSON object into an Ability struct
      */
-    NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE_WITH_DEFAULT(Ability, name, text, type);
+    void from_json(const nlohmann::json &json, Ability &ability);
+    
+    /**
+     * Converts an Ability struct to a JSON object
+     */
+    void to_json(nlohmann::json &json, const Ability &ability);
 
     /**
      * Structure to store the Ancient Trait of the card
@@ -66,10 +71,14 @@ namespace pokemon_tcg_sdk {
     };
 
     /**
-     * Defines the functions to interchange JSON to the AncientTrait structure and back
+     * Converts the JSON object into an AncientTrait strutc
      */
-    NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE_WITH_DEFAULT(AncientTrait, name, text);
-    
+    void from_json(const nlohmann::json &json, AncientTrait &ancientTrait);
+
+    /**
+     * Converts an AncientTrait struct into a JSON object
+     */
+    void to_json(nlohmann::json &json, const AncientTrait &ancientTrait);
 
     /**
      * Structure to hold an Attack on the card
@@ -108,9 +117,19 @@ namespace pokemon_tcg_sdk {
     };
 
     /**
+     * Converts a JSON object into an Attack struct
+     */
+    void from_json(const nlohmann::json &json, Attack &attack);
+
+    /**
+     * Converts an Attack struct onto a JSON object
+     */
+    void to_json(nlohmann::json &json, const Attack &attack);
+
+    /**
      * Defines the functions to interchange JSON to the Attack structure and back
      */
-    NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE_WITH_DEFAULT(Attack, cost, name, text, damage, convertedEnergyCost);
+    // NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE_WITH_DEFAULT(Attack, cost, name, text, damage, convertedEnergyCost);
 
     /**
      * Structure to hold the images of the card
@@ -326,12 +345,13 @@ namespace pokemon_tcg_sdk {
     };
 
     /**
-     * Defines the functions to interchange JSON to the TcgPlayerPrices structure and back
+     * Converts JSON to the TcgPlayerPrices structure
      */
-    // NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE_WITH_DEFAULT(TcgPlayerPrices, low, mid, high, market, directLow);
-
     void to_json(nlohmann::json &jsonData, const TcgPlayerPrices &prices);
 
+    /**
+     * Converts the TcgPlayerPrices structure to JSON
+     */
     void from_json(const nlohmann::json &jsonData, TcgPlayerPrices &prices);
 
     /**
@@ -371,14 +391,17 @@ namespace pokemon_tcg_sdk {
     };
 
     /**
-     * Converts a prices subObject from JSON to the TcgPricesContainer structure and back
+     * Converts JSON to the TcgPricesContainer structure
+     * TODO: update
+     * 
      */
-    void from_json(const nlohmann::json& j, TcgPlayerPricesContainer& tcgPlayer);
+    void from_json(const nlohmann::json& json, TcgPlayerPricesContainer& tcgPlayer);
 
     /**
-     * Converts a TcgPlayerPricesContainer structure to JSON and back
+     * Converts a TcgPlayerPricesContainer structure to JSON
+     * TODO: update
      */
-    void to_json(nlohmann::json& j, const TcgPlayerPricesContainer& tcgPlayer);
+    void to_json(nlohmann::json& json, const TcgPlayerPricesContainer& tcgPlayer);
 
     /**
      * Structure to hold the TcgPlayer information provided by the API
