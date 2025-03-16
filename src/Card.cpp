@@ -95,6 +95,20 @@ namespace pokemon_tcg_sdk {
         return out.str();
     }
 
+    void from_json(const nlohmann::json &json, CardImages &images){
+        if (json.contains("small") && !(json.at("small").is_null())){
+            images.small = json.value("small", "");
+        }
+        if (json.contains("large") && !(json.at("large").is_null())){
+            images.large = json.value("large", "");
+        }
+    }
+
+    void to_json(nlohmann::json &json, const CardImages &images){
+        json["small"] = images.small;
+        json["large"] = images.large;
+    }
+
     std::string CardMarketPrices::to_string(){
         std::ostringstream out;
         out.imbue(std::locale(""));
@@ -116,6 +130,73 @@ namespace pokemon_tcg_sdk {
         return out.str();
     }
 
+    void from_json(const nlohmann::json &json, CardMarketPrices &cardMarketPrices){
+        if (json.contains("averageSellingPrice") && !(json.at("averageSellingPrice").is_null())){
+            cardMarketPrices.averageSellingPrice = json.value("averageSellingPrice", 0.0);
+        }
+        if (json.contains("lowPrice") && !(json.at("lowPrice").is_null())){
+            cardMarketPrices.lowPrice = json.value("lowPrice", 0.0);
+        }
+        if (json.contains("trendPrice") && !(json.at("trendPrice").is_null())){
+            cardMarketPrices.trendPrice = json.value("trendPrice", 0.0);
+        }
+        if (json.contains("germanProLow") && !(json.at("germanProLow").is_null())){
+            cardMarketPrices.germanProLow = json.value("germanProLow", 0.0);
+        }
+        if (json.contains("suggestedPrice") && !(json.at("suggestedPrice").is_null())){
+            cardMarketPrices.suggestedPrice = json.value("suggestedPrice", 0.0);
+        }
+        if (json.contains("reverseHoloSell") && !(json.at("reverseHoloSell").is_null())){
+            cardMarketPrices.reverseHoloSell = json.value("reverseHoloSell", 0.0);
+        }
+        if (json.contains("reverseHoloLow") && !(json.at("reverseHoloLow").is_null())){
+            cardMarketPrices.reverseHoloLow = json.value("reverseHoloLow", 0.0);
+        }
+        if (json.contains("reverseHoloTrend") && !(json.at("reverseHoloTrend").is_null())){
+            cardMarketPrices.reverseHoloTrend = json.value("reverseHoloTrend", 0.0);
+        }
+        if (json.contains("lowPriceExPlus") && !(json.at("lowPriceExPlus").is_null())){
+            cardMarketPrices.lowPriceExPlus = json.value("lowPriceExPlus", 0.0);
+        }
+        if (json.contains("avg1") && !(json.at("avg1").is_null())){
+            cardMarketPrices.avg1 = json.value("avg1", 0.0);
+        }
+        if (json.contains("avg7") && !(json.at("avg7").is_null())){
+            cardMarketPrices.avg7 = json.value("avg7", 0.0);
+        }
+        if (json.contains("avg30") && !(json.at("avg30").is_null())){
+            cardMarketPrices.avg30 = json.value("avg30", 0.0);
+        }
+        if (json.contains("reverseHoloAvg1") && !(json.at("reverseHoloAvg1").is_null())){
+            cardMarketPrices.reverseHoloAvg1 = json.value("reverseHoloAvg1", 0.0);
+        }
+        if (json.contains("reverseHoloAvg7") && !(json.at("reverseHoloAvg7").is_null())){
+            cardMarketPrices.reverseHoloAvg7 = json.value("reverseHoloAvg7", 0.0);
+        }
+        if (json.contains("reverseHoloAvg30") && !(json.at("reverseHoloAvg30").is_null())){
+            cardMarketPrices.reverseHoloAvg30 = json.value("reverseHoloAvg30", 0.0);
+        }
+    }
+
+    void to_json(nlohmann::json &json, const CardMarketPrices &cardMarketPrices){
+        json["averageSellingPrice"] = cardMarketPrices.averageSellingPrice;
+        json["lowPrice"] = cardMarketPrices.lowPrice;
+        json["trendPrice"] = cardMarketPrices.trendPrice;
+        json["germanProLow"] = cardMarketPrices.germanProLow;
+        json["suggestedPrice"] = cardMarketPrices.suggestedPrice;
+        json["reverseHoloSell"] = cardMarketPrices.reverseHoloSell;
+        json["reverseHoloLow"] = cardMarketPrices.reverseHoloLow;
+        json["reverseHoloTrend"] = cardMarketPrices.reverseHoloTrend;
+        json["lowPriceExPlus"] = cardMarketPrices.lowPriceExPlus;
+        json["avg1"] = cardMarketPrices.avg1;
+        json["avg7"] = cardMarketPrices.avg7;
+        json["avg30"] = cardMarketPrices.avg30;
+        json["reverseHoloAvg1"] = cardMarketPrices.reverseHoloAvg1;
+        json["reverseHoloAvg7"] = cardMarketPrices.reverseHoloAvg7;
+        json["reverseHoloAvg30"] = cardMarketPrices.reverseHoloAvg30;
+        
+    }
+
     std::string CardMarket::to_string(){
         std::ostringstream out;
         out << "\tCardMarket URL: " << url << std::endl;
@@ -124,11 +205,44 @@ namespace pokemon_tcg_sdk {
         return out.str();
     }
 
+    void from_json(const nlohmann::json &json, CardMarket &cardMarket){
+        nlohmann::json defaultNull = nlohmann::json::parse("{}");
+        if (json.contains("url") && !(json.at("url").is_null())){
+            cardMarket.url = json.value("url", "");
+        }
+        if (json.contains("updatedAt") && !(json.at("updatedAt").is_null())){
+            cardMarket.updatedAt = json.value("updatedAt", "");
+        }
+        if (json.contains("prices") && !(json.at("prices").is_null())){
+            cardMarket.prices = json.value("prices", defaultNull);
+        }
+    }
+
+    void to_json(nlohmann::json &json, const CardMarket &cardMarket){
+        json["url"] = cardMarket.url;
+        json["updatedAt"] = cardMarket.updatedAt;
+        json["prices"] = cardMarket.prices;
+    }
+
     std::string Resistance::to_string(){
         std::ostringstream out;
         out << "\tResistance Type: " << type << std::endl;
         out << "\tResistance Value: " << value << std::endl;
         return out.str();
+    }
+
+    void from_json(const nlohmann::json &json, Resistance &resistance){
+        if(json.contains("type") && !(json.at("type").is_null())){
+            resistance.type = json.value("type", "");
+        }
+        if(json.contains("value") && !(json.at("value").is_null())){
+            resistance.value = json.value("value", "");
+        }
+    }
+
+    void to_json(nlohmann::json &json, const Resistance &resistance){
+        json["type"] = resistance.type;
+        json["value"] = resistance.value;
     }
 
     std::string TcgPlayerPrices::to_string(){
@@ -142,6 +256,32 @@ namespace pokemon_tcg_sdk {
         return out.str();
     }
 
+    void from_json(const nlohmann::json &json, TcgPlayerPrices &tcgPlayerPrices){
+        if (json.contains("low") && !json.at("low").is_null()){
+            tcgPlayerPrices.directLow = json.value("low", 0.0);
+        }
+        if (json.contains("mid") && !json.at("mid").is_null()){
+            tcgPlayerPrices.directLow = json.value("mid", 0.0);
+        }
+        if (json.contains("high") && !json.at("high").is_null()){
+            tcgPlayerPrices.directLow = json.value("high", 0.0);
+        }
+        if (json.contains("market") && !json.at("market").is_null()){
+            tcgPlayerPrices.directLow = json.value("market", 0.0);
+        }
+        if (json.contains("directLow") && !json.at("directLow").is_null()){
+            tcgPlayerPrices.directLow = json.value("directLow", 0.0);
+        }
+    }
+
+    void to_json(nlohmann::json &json, const TcgPlayerPrices &tcgPlayerPrices){
+        json.at("low") = tcgPlayerPrices.low;
+        json.at("mid") = tcgPlayerPrices.mid;
+        json.at("high") = tcgPlayerPrices.high;
+        json.at("market") = tcgPlayerPrices.market;
+        json.at("directLow") = tcgPlayerPrices.directLow;
+    }
+
     std::string TcgPlayerPricesContainer::to_string(){
         std::ostringstream out;
         out << "\tTcgPlayer Normal Prices:" << std::endl << normal.to_string();
@@ -152,23 +292,31 @@ namespace pokemon_tcg_sdk {
         return out.str();
     }
 
-    void from_json(const nlohmann::json& json, TcgPlayerPricesContainer& container){
+    void from_json(const nlohmann::json& json, TcgPlayerPricesContainer& tcgPlayerPricesContainer){
         nlohmann::json defaultNull = nlohmann::json::parse("{}");
-        json.value("normal", defaultNull).get_to(container.normal);
-        json.value("holofoil", defaultNull).get_to(container.holofoil);
-        json.value("reverseHolofoil", defaultNull).get_to(container.reverseHolofoil);
-        json.value("1stEditionHolofoil", defaultNull).get_to(container.firstEditionHolofoil);
-        json.value("1stEditionNormal", defaultNull).get_to(container.firstEditionNormal);
+        if (json.contains("normal") && !(json.at("normal").is_null())){
+            tcgPlayerPricesContainer.normal = json.value("normal", defaultNull);
+        }
+        if (json.contains("holofoil") && !(json.at("holofoil").is_null())){
+            tcgPlayerPricesContainer.holofoil = json.value("holofoil", defaultNull);
+        }
+        if (json.contains("reverseHolofoil") && !(json.at("reverseHolofoil").is_null())){
+            tcgPlayerPricesContainer.reverseHolofoil = json.value("reverseHolofoil", defaultNull);
+        }
+        if (json.contains("firstEditionHolofoil") && !(json.at("firstEditionHolofoil").is_null())){
+            tcgPlayerPricesContainer.firstEditionHolofoil = json.value("firstEditionHolofoil", defaultNull);
+        }
+        if (json.contains("firstEditionNormal") && !(json.at("firstEditionNormal").is_null())){
+            tcgPlayerPricesContainer.firstEditionNormal = json.value("firstEditionNormal", defaultNull);
+        }
     }
 
-    void to_json(nlohmann::json& json, const TcgPlayerPricesContainer& container){
-        json = nlohmann::json{
-            {"normal", container.normal},
-            {"holofoil", container.holofoil},
-            {"reverseHolofoil", container.reverseHolofoil},
-            {"1stEditionHolofoil", container.firstEditionHolofoil},
-            {"1stEditionNormal", container.firstEditionNormal},
-        };
+    void to_json(nlohmann::json &json, const TcgPlayerPricesContainer &tcgPlayerPricesContainer){
+        json["normal"] = tcgPlayerPricesContainer.normal;
+        json["holofoil"] = tcgPlayerPricesContainer.holofoil;
+        json["reverseHolofoil"] = tcgPlayerPricesContainer.reverseHolofoil;
+        json["firstEditionHolofoil"] = tcgPlayerPricesContainer.firstEditionHolofoil;
+        json["firstEditionNormal"] = tcgPlayerPricesContainer.firstEditionNormal;
     }
 
     std::string TcgPlayer::to_string(){
@@ -179,30 +327,23 @@ namespace pokemon_tcg_sdk {
         return out.str();
     }
 
-    void from_json(const nlohmann::json &jsonData, TcgPlayerPrices &prices){
-        if (jsonData.contains("low") && !jsonData.at("low").is_null()){
-            prices.directLow = jsonData.value("low", 0.0);
+    void from_json(const nlohmann::json &json, TcgPlayer &tcgPlayer){
+        nlohmann::json defaultNull = nlohmann::json::parse("{}");
+        if (json.contains("url") && !(json.at("url").is_null())){
+            tcgPlayer.url = json.value("url", "");
         }
-        if (jsonData.contains("mid") && !jsonData.at("mid").is_null()){
-            prices.directLow = jsonData.value("mid", 0.0);
+        if (json.contains("updatedAt") && !(json.at("updatedAt").is_null())){
+            tcgPlayer.updatedAt = json.value("updatedAt", "");
         }
-        if (jsonData.contains("high") && !jsonData.at("high").is_null()){
-            prices.directLow = jsonData.value("high", 0.0);
-        }
-        if (jsonData.contains("market") && !jsonData.at("market").is_null()){
-            prices.directLow = jsonData.value("market", 0.0);
-        }
-        if (jsonData.contains("directLow") && !jsonData.at("directLow").is_null()){
-            prices.directLow = jsonData.value("directLow", 0.0);
+        if (json.contains("prices") && !(json.at("prices").is_null())){
+            tcgPlayer.prices = json.value("prices", defaultNull);
         }
     }
 
-    void to_json(nlohmann::json &jsonData, const TcgPlayerPrices &prices){
-        jsonData.at("low") = prices.low;
-        jsonData.at("mid") = prices.mid;
-        jsonData.at("high") = prices.high;
-        jsonData.at("market") = prices.market;
-        jsonData.at("directLow") = prices.directLow;
+    void to_json(nlohmann::json &json, const TcgPlayer &tcgPlayer){
+        json["url"] = tcgPlayer.url;
+        json["updatedAt"] = tcgPlayer.updatedAt;
+        json["prices"] = tcgPlayer.prices;
     }
 
     std::string Weakness::to_string(){
@@ -210,6 +351,20 @@ namespace pokemon_tcg_sdk {
         out << "\tWeakness Type: " << type << std::endl;
         out << "\tWeakness Value: " << value << std::endl;
         return out.str();
+    }
+
+    void from_json(const nlohmann::json &json, Weakness &weakness){
+        if (json.contains("type") && !(json.at("type").is_null())){
+            weakness.type = json.value("type", "");
+        }
+        if (json.contains("value") && !(json.at("value").is_null())){
+            weakness.value = json.value("value", "");
+        }
+    }
+
+    void to_json(nlohmann::json &json, const Weakness &weakness){
+        json["type"] = weakness.type;
+        json["value"] = weakness.value;
     }
 
     std::vector<Card> Card::all(API* api, std::string orderBy, std::string select){
@@ -410,4 +565,124 @@ namespace pokemon_tcg_sdk {
         out << "Card CardMarket:" << std::endl << cardmarket.to_string();
         return out.str();
     }
+
+    void from_json(const nlohmann::json &json, Card &card){
+        nlohmann::json defaultNull = nlohmann::json::parse("{}");
+        if (json.contains("id") && !(json.at("id").is_null())){
+            card.id = json.value("id", "");
+        }
+        if (json.contains("name") && !(json.at("name").is_null())){
+            card.name = json.value("name", "");
+        }
+        if (json.contains("supertype") && !(json.at("supertype").is_null())){
+            card.supertype = json.value("supertype", "");
+        }
+        if (json.contains("subtypes") && !(json.at("subtypes").is_null())){
+            card.subtypes = json.value("subtypes", defaultNull);
+        }
+        if (json.contains("level") && !(json.at("level").is_null())){
+            card.level = json.value("level", "");
+        }
+        if (json.contains("hp") && !(json.at("hp").is_null())){
+            card.hp = json.value("hp", "");
+        }
+        if (json.contains("types") && !(json.at("types").is_null())){
+            card.types = json.value("types", defaultNull);
+        }
+        if (json.contains("evolvesFrom") && !(json.at("evolvesFrom").is_null())){
+            card.evolvesFrom = json.value("evolvesFrom", "");
+        }
+        if (json.contains("evolvesTo") && !(json.at("evolvesTo").is_null())){
+            card.evolvesTo = json.value("evolvesTo", defaultNull);
+        }
+        if (json.contains("rules") && !(json.at("rules").is_null())){
+            card.rules = json.value("rules", defaultNull);
+        }
+        if (json.contains("ancientTrait") && !(json.at("ancientTrait").is_null())){
+            card.ancientTrait = json.value("ancientTrait", defaultNull);
+        }
+        if (json.contains("abilities") && !(json.at("abilities").is_null())){
+            card.abilities = json.value("abilities", defaultNull);
+        }
+        if (json.contains("attacks") && !(json.at("attacks").is_null())){
+            card.attacks = json.value("attacks", defaultNull);
+        }
+        if (json.contains("weaknesses") && !(json.at("weaknesses").is_null())){
+            card.weaknesses = json.value("weaknesses", defaultNull);
+        }
+        if (json.contains("resistances") && !(json.at("resistances").is_null())){
+            card.resistances = json.value("resistances", defaultNull);
+        }
+        if (json.contains("retreatCost") && !(json.at("retreatCost").is_null())){
+            card.retreatCost = json.value("retreatCost", defaultNull);
+        }
+        if (json.contains("convertedRetreatCost") && !(json.at("convertedRetreatCost").is_null())){
+            card.convertedRetreatCost = json.value("convertedRetreatCost", 0);
+        }
+        if (json.contains("set") && !(json.at("set").is_null())){
+            card.set = json.value("set", defaultNull);
+        }
+        if (json.contains("number") && !(json.at("number").is_null())){
+            card.number = json.value("number", "");
+        }
+        if (json.contains("artist") && !(json.at("artist").is_null())){
+            card.artist = json.value("artist", "");
+        }
+        if (json.contains("rarity") && !(json.at("rarity").is_null())){
+            card.rarity = json.value("rarity", "");
+        }
+        if (json.contains("flavorText") && !(json.at("flavorText").is_null())){
+            card.flavorText = json.value("flavorText", "");
+        }
+        if (json.contains("nationalPokedexNumbers") && !(json.at("nationalPokedexNumbers").is_null())){
+            std::vector<int> arrayNull;
+            card.nationalPokedexNumbers = json.value("nationalPokedexNumbers", arrayNull);
+        }
+        if (json.contains("legalities") && !(json.at("legalities").is_null())){
+            card.legalities = json.value("legalities", defaultNull);
+        }
+        if (json.contains("regulationMark") && !(json.at("regulationMark").is_null())){
+            card.regulationMark = json.value("regulationMark", "");
+        }
+        if (json.contains("images") && !(json.at("images").is_null())){
+            card.images = json.value("images", defaultNull);
+        }
+        if (json.contains("tcgplayer") && !(json.at("tcgplayer").is_null())){
+            card.tcgplayer = json.value("tcgplayer", defaultNull);
+        }
+        if (json.contains("cardmarket") && !(json.at("cardmarket").is_null())){
+            card.cardmarket = json.value("cardmarket", defaultNull);
+        }
+    }
+
+    void to_json(nlohmann::json &json, const Card &card){
+        json["id"] = card.id;
+        json["name"] = card.name;
+        json["supertype"] = card.supertype;
+        json["subtypes"] = card.subtypes;
+        json["level"] = card.level;
+        json["hp"] = card.hp;
+        json["types"] = card.types;
+        json["evolvesFrom"] = card.evolvesFrom;
+        json["evolvesTo"] = card.evolvesTo;
+        json["rules"] = card.rules;
+        json["ancientTrait"] = card.ancientTrait;
+        json["abilities"] = card.abilities;
+        json["weaknesses"] = card.weaknesses;
+        json["resistances"] = card.resistances;
+        json["retreatCost"] = card.retreatCost;
+        json["convertedRetreatCost"] = card.convertedRetreatCost;
+        json["set"] = card.set;
+        json["number"] = card.number;
+        json["artist"] = card.artist;
+        json["rarity"] = card.rarity;
+        json["flavorText"] = card.flavorText;
+        json["nationalPokedexNumbers"] = card.nationalPokedexNumbers;
+        json["legalities"] = card.legalities;
+        json["regulationMark"] = card.regulationMark;
+        json["images"] = card.images;
+        json["tcgplayer"] = card.tcgplayer;
+        json["cardmarket"] = card.cardmarket;
+    }
+
 }
