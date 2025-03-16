@@ -796,6 +796,7 @@ namespace pokemon_tcg_sdk {
              */
             struct CardMarket cardmarket;
     };
+
 };
 
 #endif /*__CARD_HPP__*/
