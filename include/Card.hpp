@@ -482,6 +482,7 @@ namespace pokemon_tcg_sdk {
 
     /**
      * Class to Store a Card from the Pokémon TCG API
+     * https://docs.pokemontcg.io/api-reference/cards/card-object
      */
     class Card {
         public:
