@@ -1,8 +1,6 @@
 #ifndef __POKEMON_TCG_SDK__
 #define __POKEMON_TCG_SDK__
 
-//#define JSON_DIAGNOSTICS 1
-
 #include <nlohmann/json.hpp>
 
 #include "Api.hpp"
