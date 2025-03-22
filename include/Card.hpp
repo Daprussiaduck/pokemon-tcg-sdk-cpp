@@ -499,12 +499,12 @@ namespace pokemon_tcg_sdk {
             /**
              * Returns the cards matching the provided query
              */
-            static std::vector<Card> where(API* api, std::string query, std::string orderBy="");
+            static std::vector<Card> where(API* api, std::string query, std::string orderBy = "", std::string select = "");
 
             /**
              * Returns the cards matching the provided query
              */
-            static std::vector<Card> where(API* api, nlohmann::json query);
+            static std::vector<Card> where(API* api, nlohmann::json query, std::string orderBy = "", std::string select = "");
             
             /**
              * Returns the ID of the Card

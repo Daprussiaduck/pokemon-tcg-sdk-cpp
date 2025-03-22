@@ -40,14 +40,12 @@ namespace pokemon_tcg_sdk {
         return ret;
     }
 
-    std::vector<Set> Set::where(API* api, std::string query, std::string orderBy){
-        std::vector<Set> ret;
-        return ret;
+    std::vector<Set> Set::where(API* api, std::string query, std::string orderBy, std::string select){
+        return Query::where<Set>(api, query, POKEMON_TCG_SDK_CARDS_URL, orderBy, select);
     }
 
-    std::vector<Set> Set::where(API* api, nlohmann::json query){
-        std::vector<Set> ret;
-        return ret;
+    std::vector<Set> Set::where(API* api, nlohmann::json query, std::string orderBy, std::string select){
+        return Query::where<Set>(api, query, POKEMON_TCG_SDK_CARDS_URL, orderBy, select);
     }
 
     std::string Set::getID(){

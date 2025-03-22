@@ -58,12 +58,12 @@ namespace pokemon_tcg_sdk {
             /**
              * Returns the sets matching the provided query
              */
-            static std::vector<Set> where(API* api, std::string query, std::string orderBy="");
+            static std::vector<Set> where(API* api, std::string query, std::string orderBy = "", std::string select = "");
 
             /**
              * Returns the sets matching the provided query
              */
-            static std::vector<Set> where(API* api, nlohmann::json query);
+            static std::vector<Set> where(API* api, nlohmann::json query, std::string orderBy = "", std::string select = "");
             
             /**
              * Returns the ID of the Set
