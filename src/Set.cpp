@@ -1,7 +1,7 @@
 #include "Set.hpp"
 
 namespace pokemon_tcg_sdk {
-    std::string SetImages::to_string(bool card = false){
+    std::string SetImages::to_string(bool card){
         std::ostringstream out;
         out << (card ? "\t" : "") << "\tSet Symbol Image URL: " << symbol << std::endl;
         out << (card ? "\t" : "") << "\tSet Logo Image URL: " << logo << std::endl;
@@ -20,6 +20,34 @@ namespace pokemon_tcg_sdk {
     void to_json(nlohmann::json &json, const SetImages &setImages){
         json["symbol"] = setImages.symbol;
         json["logo"] = setImages.logo;
+    }
+
+    std::vector<Set> Set::all(API* api, std::string orderBy, std::string select){
+        return Query::all<Set>(api, POKEMON_TCG_SDK_SETS_URL, orderBy, select);
+    }
+
+    Set Set::find(API* api, std::string id){
+        Set ret;
+        nlohmann::json resp = Query::find(api, POKEMON_TCG_SDK_SETS_URL, id);
+        try {
+            if (!resp.is_null()){
+                nlohmann::json data = resp.at("data");
+                ret = data.template get<Set>();
+            }    
+        } catch (nlohmann::json::basic_json::out_of_range ex){
+            std::cout << "Data not found: " << ex.what() << std::endl; 
+        }
+        return ret;
+    }
+
+    std::vector<Set> Set::where(API* api, std::string query, std::string orderBy){
+        std::vector<Set> ret;
+        return ret;
+    }
+
+    std::vector<Set> Set::where(API* api, nlohmann::json query){
+        std::vector<Set> ret;
+        return ret;
     }
 
     std::string Set::getID(){
@@ -62,7 +90,7 @@ namespace pokemon_tcg_sdk {
         return images;
     }
 
-    std::string Set::to_string(bool card = false){
+    std::string Set::to_string(bool card){
         std::ostringstream out;
         out << (card ? "\t" : "") << "Set ID: " << id << std::endl;
         out << (card ? "\t" : "") << "Set Name: " << name << std::endl; 

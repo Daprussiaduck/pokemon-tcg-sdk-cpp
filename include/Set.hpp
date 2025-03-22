@@ -5,6 +5,8 @@
 #include <string>
 
 #include "Legalities.hpp"
+#include "api/Query.hpp"
+#include "api/URLS.hpp"
 
 namespace pokemon_tcg_sdk {
     /**
@@ -25,7 +27,7 @@ namespace pokemon_tcg_sdk {
         /**
          * Returns a string representing the Set Images structure
          */
-        std::string to_string(bool card);
+        std::string to_string(bool card = false);
     };
 
     /**
@@ -43,6 +45,26 @@ namespace pokemon_tcg_sdk {
      */
     class Set{
         public:
+            /**
+             * Returns all sets
+             */
+            static std::vector<Set> all(API* api, std::string orderBy = "", std::string select = "");
+
+            /**
+             * Returns the sets matching the provided ID
+             */
+            static Set find(API* api, std::string id);
+
+            /**
+             * Returns the sets matching the provided query
+             */
+            static std::vector<Set> where(API* api, std::string query, std::string orderBy="");
+
+            /**
+             * Returns the sets matching the provided query
+             */
+            static std::vector<Set> where(API* api, nlohmann::json query);
+            
             /**
              * Returns the ID of the Set
              */
@@ -96,7 +118,7 @@ namespace pokemon_tcg_sdk {
             /**
              * Returns a string representing the Set
              */
-            std::string to_string(bool card);
+            std::string to_string(bool card = false);
             
             /**
              * Converts a JSON object into a Set class
