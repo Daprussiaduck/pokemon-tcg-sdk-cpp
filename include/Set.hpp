@@ -29,9 +29,14 @@ namespace pokemon_tcg_sdk {
     };
 
     /**
-     * Defines the functions to interchange JSON to the SetImages structure and back
+     * Converts a JSON object to a SetImages struct
      */
-    NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE(SetImages, symbol, logo);
+    void from_json(const nlohmann::json &json, SetImages &setImages);
+
+    /**
+     * Converts a SetImages struct into a JSON object
+     */
+    void to_json(nlohmann::json &json, const SetImages &setImages);
 
     /**
      * Class to Store a Set from the Pokémon TCG API
@@ -92,13 +97,16 @@ namespace pokemon_tcg_sdk {
              * Returns a string representing the Set
              */
             std::string to_string(bool card);
+            
+            /**
+             * Converts a JSON object into a Set class
+             */
+            friend void from_json(const nlohmann::json &json, Set &set);
 
             /**
-             * Defines the functions to interchange JSON to the Set class and back
+             * Converts a Set class into a JSON object
              */
-            NLOHMANN_DEFINE_TYPE_INTRUSIVE_WITH_DEFAULT(Set,
-                id, name, series, printedTotal, total, legalities,
-                ptcgoCode, releaseDate, updatedAt, images);
+            friend void to_json(nlohmann::json &json, const Set &set);
 
         private:
             /**

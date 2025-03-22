@@ -38,9 +38,19 @@ namespace pokemon_tcg_sdk{
     };
 
     /**
+     * Converts a JSON object into a Legality struct
+     */
+    void from_json(const nlohmann::json &json, Legality &legalities);
+
+    /**
+     * Converts a Legality struct into a JSON object
+     */
+    void to_json(nlohmann::json &json, const Legality &legality);
+    
+    /**
      * Defines the functions to interchange JSON to the Legality structure and back
      */
-    NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE_WITH_DEFAULT(Legality, standard, expanded, unlimited);
+    // NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE_WITH_DEFAULT(Legality, standard, expanded, unlimited);
 };
 
 #endif /*__LEGALITY_HPP__*/
