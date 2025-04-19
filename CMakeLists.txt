@@ -60,10 +60,22 @@ install(EXPORT ${PROJECT_NAME}-Targets
 )
 
 # Variable for where the public Headers are located (the include folder)
-set(PUBLIC_HEADERS ${CMAKE_SOURCE_DIR}/include/pokemon-tcg-sdk.hpp)
+# set(PUBLIC_HEADERS 
+#     ${CMAKE_SOURCE_DIR}/include/${PROJECT_NAME}/pokemon-tcg-sdk.hpp
+#     ${CMAKE_SOURCE_DIR}/include/${PROJECT_NAME}/Api.hpp
+#     ${CMAKE_SOURCE_DIR}/include/${PROJECT_NAME}/api/Query.hpp
+#     ${CMAKE_SOURCE_DIR}/include/${PROJECT_NAME}/api/URLS.hpp
+#     ${CMAKE_SOURCE_DIR}/include/${PROJECT_NAME}/Card.hpp
+#     ${CMAKE_SOURCE_DIR}/include/${PROJECT_NAME}/Legalities.hpp
+#     ${CMAKE_SOURCE_DIR}/include/${PROJECT_NAME}/Rarities.hpp
+#     ${CMAKE_SOURCE_DIR}/include/${PROJECT_NAME}/Set.hpp
+#     ${CMAKE_SOURCE_DIR}/include/${PROJECT_NAME}/SubTypes.hpp
+#     ${CMAKE_SOURCE_DIR}/include/${PROJECT_NAME}/SuperTypes.hpp
+#     ${CMAKE_SOURCE_DIR}/include/${PROJECT_NAME}/Types.hpp
+# )
 
 # Actually "install" (copy) the public headers into the proper location
-install(FILES ${PUBLIC_HEADERS} DESTINATION include)
+install(DIRECTORY include/ DESTINATION include/${PROJECT_NAME})
 
 # Add the test imports
 include(CTest)
