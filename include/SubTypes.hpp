@@ -5,8 +5,8 @@
 #include <string>
 #include <vector>
 
-#include "api/URLS.hpp"
-#include "Api.hpp"
+#include <pokemon-tcg-sdk-cpp/api/URLS.hpp>
+#include <pokemon-tcg-sdk-cpp/Api.hpp>
 
 namespace pokemon_tcg_sdk {
     namespace SubTypes {

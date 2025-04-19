@@ -5,7 +5,7 @@
 #include <string>
 #include <vector>
 
-#include "Api.hpp"
+#include <pokemon-tcg-sdk-cpp/Api.hpp>
 
 namespace pokemon_tcg_sdk {
     namespace Query {

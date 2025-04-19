@@ -4,9 +4,9 @@
 #include <nlohmann/json.hpp>
 #include <string>
 
-#include "Legalities.hpp"
-#include "api/Query.hpp"
-#include "api/URLS.hpp"
+#include <pokemon-tcg-sdk-cpp/Legalities.hpp>
+#include <pokemon-tcg-sdk-cpp/api/Query.hpp>
+#include <pokemon-tcg-sdk-cpp/api/URLS.hpp>
 
 namespace pokemon_tcg_sdk {
     /**
