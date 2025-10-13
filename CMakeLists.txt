@@ -11,8 +11,13 @@ project(
 
 include(FetchContent)
 
-FetchContent_Declare(json URL https://github.com/nlohmann/json/releases/download/v3.11.3/json.tar.xz DOWNLOAD_EXTRACT_TIMESTAMP OLD)
+include(FetchContent)
+
+FetchContent_Declare(json URL https://github.com/nlohmann/json/releases/download/v3.12.0/json.tar.xz)
 FetchContent_MakeAvailable(json)
+
+FetchContent_Declare(cpr GIT_REPOSITORY https://github.com/libcpr/cpr.git GIT_TAG 1.12.0)
+FetchContent_MakeAvailable(cpr)
 
 find_package(CURL REQUIRED)
 
@@ -29,12 +34,10 @@ add_library(${PROJECT_NAME} SHARED
     ${SRC_DIR}/SubTypes.cpp
     ${SRC_DIR}/SuperTypes.cpp
     ${SRC_DIR}/Types.cpp
-    ${SRC_DIR}/Api.cpp
-    ${SRC_DIR}/api/Query.cpp
     
 )
 
-target_link_libraries(${PROJECT_NAME} PRIVATE nlohmann_json::nlohmann_json CURL::libcurl)
+target_link_libraries(${PROJECT_NAME} PRIVATE nlohmann_json::nlohmann_json cpr::cpr)
 
 # Tell CMAKE where our includes live
 target_include_directories(${PROJECT_NAME} PUBLIC

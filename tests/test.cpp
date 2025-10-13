@@ -1,3 +1,10 @@
+/**
+ * @file test.cpp
+ * 
+ * @brief Tests the Pokemon TCG SDK library for c++
+ * 
+ * @author Daprussiaduck
+ */
 #include <pokemon-tcg-sdk.hpp>
 #include <iostream>
 #include <fstream>
