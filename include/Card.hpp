@@ -16,8 +16,6 @@
 #include <nlohmann/json.hpp>
 
 #include <pokemon-tcg-sdk-cpp/Legalities.hpp>
-#include <pokemon-tcg-sdk-cpp/api/Query.hpp>
-#include <pokemon-tcg-sdk-cpp/api/URLS.hpp>
 #include <pokemon-tcg-sdk-cpp/Set.hpp>
 
 namespace pokemon_tcg_sdk {
@@ -28,33 +26,41 @@ namespace pokemon_tcg_sdk {
      */
     struct Ability {
         /**
-         * The Name of the Ability
+         * @brief The Name of the Ability
          */
         std::string name;
 
         /**
-         * The Text of the Ability
+         * @brief The Text of the Ability
          */
         std::string text;
 
         /**
-         * The Type of the Ability
+         * @brief The Type of the Ability
          */
         std::string type;
 
         /**
-         * Returns a string representing the Ability
+         * @brief Returns a string representing the Ability
+         * 
+         * @return A Sring representation of the Ability
          */
         std::string to_string();
     };
     
     /**
      * @brief Converts the JSON object into an Ability struct
+     * 
+     * @param json The nlohmann::json object to convert from
+     * @param ability The Ability objet to convert into
      */
     void from_json(const nlohmann::json &json, Ability &ability);
     
     /**
      * @brief Converts an Ability struct to a JSON object
+     * 
+     * @param json The nlohmann::json object to convert to
+     * @param ability The Ability structure to convert from
      */
     void to_json(nlohmann::json &json, const Ability &ability);
 
@@ -76,17 +82,25 @@ namespace pokemon_tcg_sdk {
 
         /**
          * @brief Returns a string representing the Ancient Trait
+         * 
+         * @return A String representation of the AncientTrait
          */
         std::string to_string();
     };
 
     /**
      * @brief Converts the JSON object into an AncientTrait strut
+     * 
+     * @param json The nlohmann::json objetct to convert from
+     * @param ancientTrait The AncientTrait structure to convert into
      */
     void from_json(const nlohmann::json &json, AncientTrait &ancientTrait);
 
     /**
      * @brief Converts an AncientTrait struct into a JSON object
+     * 
+     * @param json The nlohmann::json object to convert into
+     * @param ancientTrait The AncientTrait Structure to cinvert from
      */
     void to_json(nlohmann::json &json, const AncientTrait &ancientTrait);
 
@@ -123,17 +137,25 @@ namespace pokemon_tcg_sdk {
 
         /**
          * @brief Returns a string representing the Attack
+         * 
+         * @return A String representation of the Attack structure
          */
         std::string to_string();
     };
 
     /**
      * @brief Converts a JSON object into an Attack struct
+     * 
+     * @param json The nlohmann::json object to convert from
+     * @param attack The Attack Structure to convert to
      */
     void from_json(const nlohmann::json &json, Attack &attack);
 
     /**
      * @brief Converts an Attack struct onto a JSON object
+     * 
+     * @param json The nlohmann::json object to convert into
+     * @param attack The Attack structure to convert from
      */
     void to_json(nlohmann::json &json, const Attack &attack);
 
@@ -155,17 +177,25 @@ namespace pokemon_tcg_sdk {
 
         /**
          * @brief Returns a string representing the card's images
+         * 
+         * @return A string representation of the CardImages Structure
          */
         std::string to_string();
     };
 
     /**
      * @brief Converts a JSON object into a CardImages struct
+     * 
+     * @param json The nlohmann::json object to convert from
+     * @param images The CardImages structure to convert into
      */
     void from_json(const nlohmann::json &json, CardImages &images);
 
     /**
      * @brief Converts a CardImages struct into a JSON object
+     * 
+     * @param json The nlohmann::json object to convert into
+     * @param images The CardImages structure to convert from
      */
     void to_json(nlohmann::json &json, const CardImages &images);
 
@@ -252,18 +282,26 @@ namespace pokemon_tcg_sdk {
         double reverseHoloAvg30;
 
         /**
-         * @brief Returns a string representing the Card Market Prices 
+         * @brief Returns a string representing the Card Market Prices
+         * 
+         * @return A string representing the CardMarketPrices Structure
          */
         std::string to_string();
     };
 
     /**
      * @brief Converts a JSON object into a CardMarketPrices struct
+     * 
+     * @param json The nlohmann::json object to convert from
+     * @param cardMarketPrices The CardMarketPrices Structure to convert into
      */
     void from_json(const nlohmann::json &json, CardMarketPrices &cardMarketPrices);
 
     /**
      * @brief Converts a CardMarketPrices struct into a JSON object
+     * 
+     * @param json The nlohmann::json object to convert into
+     * @param cardMarketPrices The CardMarketPrices Structure to convert from
      */
     void to_json(nlohmann::json &json, const CardMarketPrices &cardMarketPrices);
 
@@ -289,18 +327,26 @@ namespace pokemon_tcg_sdk {
         struct CardMarketPrices prices;
 
         /**
-         * @brief Returns a string representing the Card Market 
+         * @brief Returns a string representing the Card Market
+         * 
+         * @return A string representing the CardMarket structure
          */
         std::string to_string();
     };
     
     /**
      * @brief Converts a JSON object into a CardMarket struct
+     * 
+     * @param json The nlohmann::json object to convert from
+     * @param cardMarket The CardMarket structure to convert to
      */
     void from_json(const nlohmann::json &json, CardMarket &cardMarket);
 
     /**
      * @brief Converts a CardMarket struct into a JSON object
+     * 
+     * @param json The nlohmann::json object to convert to
+     * @param cardMArket The CardMarket structure to convert from
      */
     void to_json(nlohmann::json &json, const CardMarket &cardMarket);
 
@@ -322,17 +368,25 @@ namespace pokemon_tcg_sdk {
 
         /**
          * @brief Returns a string representing the Resistance
+         * 
+         * @return a string representing the Resistance structure
          */
         std::string to_string();
     };
 
     /**
      * @brief Converts a JSON object into a Resistance struct
+     * 
+     * @param json The nlohmann::json object to convert from
+     * @param resistance The Resistance structure to convert into 
      */
     void from_json(const nlohmann::json &json, Resistance &resistance);
 
     /**
      * @brief Converts a Resistance struct into a JSON object
+     * 
+     * @param json The nlohmann::json object to convert into
+     * @param resistance The Resistance structure to convert from
      */
     void to_json(nlohmann::json &json, const Resistance &resistance);
 
@@ -369,17 +423,25 @@ namespace pokemon_tcg_sdk {
 
         /**
          * @brief Returns a string representing the price from TcgPlayer
+         * 
+         * @return A string representing the TCGPlayerPrices structure
          */
         std::string to_string();
     };
 
     /**
      * @brief Converts a JSON object into a TcgPlayerPrices struct
+     * 
+     * @param json The nlohmann::json object to convert from
+     * @param tcgPlayerPrices The TcgPlayerPrices structure to convert into
      */
     void to_json(nlohmann::json &json, const TcgPlayerPrices &tcgPlayerPrices);
 
     /**
      * @brief Converts a TcgPlayerPrices struct into a JSON object
+     * 
+     * @param json The nlohmann::json object to convert into
+     * @param tcgPlayerPrices The TCGPlayerPrices Structure to convert from
      */
     void from_json(const nlohmann::json &json, TcgPlayerPrices &tcgPlayerPrices);
 
@@ -416,17 +478,25 @@ namespace pokemon_tcg_sdk {
         
         /**
          * @brief Returns a string representing the mutiple prices of a card's options
+         * 
+         * @return A string representing the TcgPlayerPricesContainer structure
          */
         std::string to_string();
     };
 
     /**
      * @brief Converts a JSON object into a TcgPricesContainer struct
+     * 
+     * @param json The nlohmann::json object to convert from
+     * @param tcgPlayerPricesContainer The TcgPlayerPricesContainer structure to convert into
      */
     void from_json(const nlohmann::json &json, TcgPlayerPricesContainer &tcgPlayerPricesContainer);
 
     /**
      * @brief Converts a TcgPlayerPricesContainer struct into a JSON object
+     * 
+     * @param json The nlohmann::json object to convert to
+     * @param tcgPlayerPricesContainer The TcgPlayerPricesContainer structure to convert from
      */
     void to_json(nlohmann::json &json, const TcgPlayerPricesContainer &tcgPlayerPricesContainer);
 
@@ -453,17 +523,25 @@ namespace pokemon_tcg_sdk {
 
         /**
          * @brief Returns a string representing the TCGPlayer information for the card
+         * 
+         * @return A string representing the TcgPlayerPrices structure
          */
         std::string to_string();
     };
 
     /**
      * @brief Converts a JSON object into a TcgPlayer struct
+     * 
+     * @param json The nlohmann::json object to convert from
+     * @param tcgPlayer The TcgPlayer structure to convert into
      */
     void from_json(const nlohmann::json &json, TcgPlayer &tcgPlayer);
 
     /**
      * @brief Converts a TcgPlayer struct into a JSON object
+     * 
+     * @param json The nlohmann::json object to convert into
+     * @param tcgPlayer The TcgPlayer structure to convert from
      */
     void to_json(nlohmann::json &json, const TcgPlayer &tcgPlayer);
 
@@ -485,17 +563,25 @@ namespace pokemon_tcg_sdk {
         
         /**
          * @brief Returns a string representing the Weakness of the card
+         * 
+         * @return A string representing the Weakness structure
          */
         std::string to_string();
     };
 
     /**
      * @brief Converts a JSON object into a Weakness struct
+     * 
+     * @param json The nlohmann::json object to convert from
+     * @param weakness The Weakness structure to convert into
      */
     void from_json(const nlohmann::json &json, Weakness &weakness);
 
     /**
      * @brief Converts a Weakness struct into a JSON object
+     * 
+     * @param json The nlohmann::json object to convert into
+     * @param weakness The Weakness structure to convert from
      */
     void to_json(nlohmann::json &json, const Weakness &weakness);
 
@@ -508,171 +594,259 @@ namespace pokemon_tcg_sdk {
         public:
             /**
              * @brief Returns all cards
+             * 
+             * https://docs.pokemontcg.io/api-reference/cards/search-cards#query-parameters
+             * https://docs.pokemontcg.io/api-reference/cards/search-cards#ordering-data
+             * 
+             * @param orderBy How to order the Cards (Or blank for no/default ordering)
+             * @param select A Database like selection of the Cards (Or blank for all Cards)
+             * 
+             * @return A vector of the Card Objects ordered and selected from the input parameters
              */
-            static std::vector<Card> all(API* api, std::string orderBy = "", std::string select = "");
+            static std::vector<Card> all(std::string orderBy = "", std::string select = "");
 
             /**
              * @brief Returns the cards matching the provided ID
+             * 
+             * @param id The Card id to search for in the API
+             * 
+             * @return A Card object that matches the provided ID
              */
             static Card find(API* api, std::string id);
 
             /**
              * @brief Returns the cards matching the provided query
+             * 
+             * @param query The string query to lookup through the API
+             * @param orderBy The order to return (Or blank for no/default order)
+             * @param select A Database like selection of the Cards (Or blank for all Cards)
+             * 
+             * @return A vector of Cards that match the given query, and sorted/selected by the given input parameters
              */
-            static std::vector<Card> where(API* api, std::string query, std::string orderBy = "", std::string select = "");
+            static std::vector<Card> where(std::string query, std::string orderBy = "", std::string select = "");
 
             /**
              * @brief Returns the cards matching the provided query
+             * 
+             * @param query The nlohmann::json query to lookup through the API
+             * @param orderBy The order to return (Or blank for no/default order)
+             * @param select A Database like selection of the Cards (Or blank for all Cards)
+             * 
+             * @return A vector of Cards that match the given query, and sorted/selected by the given input parameters
              */
-            static std::vector<Card> where(API* api, nlohmann::json query, std::string orderBy = "", std::string select = "");
+            static std::vector<Card> where(nlohmann::json query, std::string orderBy = "", std::string select = "");
             
             /**
              * @brief Returns the ID of the Card
+             * 
+             * @return A string with the ID of the Card
              */
             std::string getID();
 
             /**
              * @brief Returns the Name of the Card
+             * 
+             * @return A string with the Name of the Card
              */
             std::string getName();
 
             /**
              * @brief Returns a list of the Card's Sub-Types
+             * 
+             * @return A vector of Strings with the Cards SubTypes
              */
             std::vector<std::string> getSubTypes();
 
             /**
              * @brief Returns the Level of the Card
+             * 
+             * @return A String with the level of the Card
              */
             std::string getLevel();
 
             /**
              * @brief Returns the HP of the Card
+             * 
+             * @return A string with the HP of the Card
              */
             std::string getHP();
 
             /**
              * @brief Returns a list of the Card's Types
+             * 
+             * @return A vector of string with the Cards Types
              */
             std::vector<std::string> getTypes();
 
             /**
              * @brief Returns the Pokémon this Card Evolves From
+             * 
+             * @return A string with the Pokemon this Card evolves from
              */
             std::string getEvolvesFrom();
 
             /**
              * @brief Returns a list of the Pokémon this Card can Evolve To
+             * 
+             * @return A vector of strings with the Pokemon this Card can evolve to
              */
             std::vector<std::string> getEvolvesTo();
 
             /**
              * @brief Returns a list of the Card's Rules
+             * 
+             * @return A vector of strings with the additional rules this Card adds while in play
              */
             std::vector<std::string> getRules();
 
             /**
              * @brief Returns the Ancient Trait of the Card
+             * 
+             * @return The internal AncientTrait structure of the Card 
              */
             AncientTrait getAncientTrait();
 
             /**
              * @brief Returns a list of the Card's Abilities
+             * 
+             * @return A vector of the Ability structure containing all of the Abilities the Card has
              */
             std::vector<Ability> getAbilities();
 
             /**
              * @brief Returns a list of the Card's Attacks
+             * 
+             * @return A vector of the Attack structure containing all of the Attacks the Card has
              */
             std::vector<Attack> getAttacks();
 
             /**
              * @brief Returns a list of the Card's Weaknesses
+             * 
+             * @return A vector of the Weakness structure containing all of the Weaknesses the Card has
              */
             std::vector<Weakness> getWeaknesses();
 
             /**
              * @brief Returns a list of the Card's Resistances
+             * 
+             * @return A vector of the Resistance structure containing all of the Resistances the Card has 
              */
             std::vector<Resistance> getResistances();
 
             /**
              * @brief Returns a list of the Card's Retreat Cost
+             * 
+             * @return A vector of strings explaining the retreat cost of the Card
              */
             std::vector<std::string> getRetreatCost();
 
             /**
              * @brief Returns the Converted Retreat of the Card
+             * 
+             * As explained by the API, the converted retreat cost is simply the amount of energies that the Card needs to retreat, missing the type information
+             * 
+             * @return The converted retreat cost of the Card
              */
             int getConvertedRetreatCost();
 
             /**
              * @brief Returns the Set of the Card
+             * 
+             * @return The Set Structure containing the information of the Set this Card is a part of
              */
             Set getSet();
 
             /**
              * @brief Returns the Number of the Card
+             * 
+             * @return The number in the Set that the Card is
              */
             std::string getNumber();
 
             /**
              * @brief Returns the Artist of the Card
+             * 
+             * @return A string with the Artist of the Card's Artwork
              */
             std::string getArtist();
 
             /**
              * @brief Retuns the Rarity of the Card
+             * 
+             * @return A string with the Cards rarity
              */
             std::string getRarity();
 
             /**
              * @brief Returns the Flavor Text of the Card
+             * 
+             * @return A string with the Card's flavor text
              */
             std::string getFlavorText();
 
             /**
              * @brief Returns a list of the National Pokédex Numbers of the Pokémon shown in the Card
+             * 
+             * @return A vector of integers with the National Pokedex numbers of the Pokemon shown in the Card
              */
             std::vector<int> getNationalPokedexNumbers();
 
             /**
              * @brief Returns the Legalities of the Card
+             * 
+             * @return A Legality structure containing the Legality information of the Card
              */
             Legality getLegalities();
 
             /**
              * @brief Returns the Regulation Mark of the Card
+             * 
+             * @return A string with the Cards regulation mark
              */
             std::string getRegulationMark();
 
             /**
              * @brief Returns the Images of the Card
+             * 
+             * @return A CardImages structure containing the images of the Card
              */
             CardImages getImages();
 
             /**
              * @brief Returns the TcgPlayer Information of the Card
+             * 
+             * @return A TcgPlayer structure 
              */
             TcgPlayer getTcgPlayer();
 
             /**
              * @brief Returns the Card Market Information of the Card
+             * 
+             * @return The CardMarket structure about the Card
              */
             CardMarket getCardmarket();
 
             /**
              * @brief Returns a string representing the Card
+             * 
+             * @return A string representing the Card
              */
             std::string to_string();
             
             /**
              * @brief Converts a JSON object into a Card object
+             * 
+             * @param json The nlohmann::json object to convert from
+             * @param card The Card class to convert to
              */
             friend void from_json(const nlohmann::json &json, Card &card);
 
             /**
              * @brief Converts a Card object into a JSON object
+             * 
+             * @param json The nlohmann::json object to convert to
+             * @param card The Card class to convert from
              */
             friend void to_json(nlohmann::json &json, const Card &card);
 

@@ -1,14 +1,21 @@
+/**
+ * @file SuperTypes.hpp
+ * 
+ * @brief This file contains the SuperTypes namespace and included API calls
+ * 
+ * @author Daprussiaduck
+ */
 #ifndef __SUPERTYPES_HPP__
 #define __SUPERTYPES_HPP__
 
-#include <nlohmann/json.hpp>
 #include <string>
 #include <vector>
 
-#include <pokemon-tcg-sdk-cpp/api/URLS.hpp>
-#include <pokemon-tcg-sdk-cpp/Api.hpp>
-
 namespace pokemon_tcg_sdk {
+    
+    /**
+     * @brief The SuperType of the Card
+     */
     namespace SuperTypes {
         /**
          * Returns a list of all of the different SuperTypes that the Pokemon TCG SDK assigns to cards

@@ -1,3 +1,10 @@
+/**
+ * @file Legalities.hpp
+ * 
+ * @brief This files contains the Structure for defining a Legality, of either a Set or a Card
+ * 
+ * @author Daprussiaduck
+ */
 #ifndef __LEGALITY_HPP__
 #define __LEGALITY_HPP__
 
@@ -5,10 +12,15 @@
 #include <string>
 
 namespace pokemon_tcg_sdk{
+
+    /**
+     * @brief The Structure representing the legality of a Set or a Card
+     */
     struct Legality {
 
         /**
-         * The standard game format
+         * @brief The standard game format
+         * 
          * Possible Values are Legal
          * https://docs.pokemontcg.io/api-reference/cards/card-object#legalities-hash
          * https://docs.pokemontcg.io/api-reference/sets/set-object/#legalities-hash
@@ -16,7 +28,8 @@ namespace pokemon_tcg_sdk{
         std::string standard;
 
         /**
-         * The expanded game format
+         * @brief The expanded game format
+         * 
          * Possible Values are Legal
          * https://docs.pokemontcg.io/api-reference/cards/card-object#legalities-hash
          * https://docs.pokemontcg.io/api-reference/sets/set-object/#legalities-hash
@@ -24,7 +37,8 @@ namespace pokemon_tcg_sdk{
         std::string expanded;
 
         /**
-         * The unlimited game format
+         * @brief The unlimited game format
+         * 
          * Possible Values are Legal
          * https://docs.pokemontcg.io/api-reference/cards/card-object#legalities-hash
          * https://docs.pokemontcg.io/api-reference/sets/set-object/#legalities-hash
@@ -32,25 +46,28 @@ namespace pokemon_tcg_sdk{
         std::string unlimited;
 
         /**
-         * Returns a string representing the Legalities
+         * @brief Returns a string representing the Legalities
+         * 
+         * @param set Should the output be tabbed in
          */
         std::string to_string(bool set);
     };
 
     /**
-     * Converts a JSON object into a Legality struct
+     * @brief Converts a JSON object into a Legality struct
+     * 
+     * @param json The nlohmann::json object to convert
+     * @param legalities The Legality structure to convert into
      */
     void from_json(const nlohmann::json &json, Legality &legalities);
 
     /**
-     * Converts a Legality struct into a JSON object
+     * @brief Converts a Legality struct into a JSON object
+     * 
+     * @param json The nlohmann::json object to convert to
+     * @param Legality The Legality structure to convert from
      */
     void to_json(nlohmann::json &json, const Legality &legality);
-    
-    /**
-     * Defines the functions to interchange JSON to the Legality structure and back
-     */
-    // NLOHMANN_DEFINE_TYPE_NON_INTRUSIVE_WITH_DEFAULT(Legality, standard, expanded, unlimited);
 };
 
 #endif /*__LEGALITY_HPP__*/
