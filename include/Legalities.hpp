@@ -8,8 +8,13 @@
 #ifndef __LEGALITY_HPP__
 #define __LEGALITY_HPP__
 
-#include <nlohmann/json.hpp>
+// Standard Library includes
 #include <string>
+
+// External Library includes
+#include <nlohmann/json.hpp>
+
+// Current Library includes
 
 namespace pokemon_tcg_sdk{
 

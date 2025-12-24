@@ -8,15 +8,18 @@
 #ifndef __CARD_HPP__
 #define __CARD_HPP__
 
+// Standard includes
 #include <format>
 #include <string>
 #include <vector>
 
+// External Libraries includes
 #include <nlohmann/adl_serializer.hpp>
 #include <nlohmann/json.hpp>
 
-#include <pokemon-tcg-sdk-cpp/Legalities.hpp>
-#include <pokemon-tcg-sdk-cpp/Set.hpp>
+// Current Library includes
+#include "Legalities.hpp"
+#include "Set.hpp"
 
 namespace pokemon_tcg_sdk {
     /**

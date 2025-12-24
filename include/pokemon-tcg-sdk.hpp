@@ -12,6 +12,10 @@
 #ifndef __POKEMON_TCG_SDK__
 #define __POKEMON_TCG_SDK__
 
+// Standard Library includes
+
+// External Library includes
+
 // Check if the API key was compiled in
 #ifndef POKEMON_TCG_SDK_API_KEY
     /**
@@ -20,16 +24,15 @@
     #define POKEMON_TCG_SDK_API_KEY std::getenv("POKEMON_TCG_API_KEY")
 #endif
 
-#include <pokemon-tcg-sdk-cpp/Api.hpp>
-#include <pokemon-tcg-sdk-cpp/api/Query.hpp>
-#include <pokemon-tcg-sdk-cpp/api/URLS.hpp>
-#include <pokemon-tcg-sdk-cpp/Card.hpp>
-#include <pokemon-tcg-sdk-cpp/Legalities.hpp>
-#include <pokemon-tcg-sdk-cpp/Set.hpp>
-#include <pokemon-tcg-sdk-cpp/Rarities.hpp>
-#include <pokemon-tcg-sdk-cpp/SubTypes.hpp>
-#include <pokemon-tcg-sdk-cpp/SuperTypes.hpp>
-#include <pokemon-tcg-sdk-cpp/Types.hpp>
+// Current Library includes
+#include "Card.hpp"
+#include "Legalities.hpp"
+#include "Query.hpp"
+#include "Rarities.hpp"
+#include "Set.hpp"
+#include "SubTypes.hpp"
+#include "SuperTypes.hpp"
+#include "Types.hpp"
 
 /**
  * @brief The main namespace for the API, to avoid collisions with other similar named objects

@@ -1,4 +1,17 @@
+/**
+ * @file Legalities.cpp
+ * 
+ * @brief This file contains the function definitions for the Legalities struct
+ * 
+ * @author Daprussiaduck
+ */
 #include "Legalities.hpp"
+
+// Standard Library includes
+
+// External Library includes
+
+// Current Library includes
 
 namespace pokemon_tcg_sdk {
     std::string Legality::to_string(bool set = false){

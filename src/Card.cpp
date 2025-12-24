@@ -1,4 +1,19 @@
+/**
+ * @file Card.cpp
+ * 
+ * @brief This file contains the function definitions for the Card Class
+ * 
+ * @author Daprussiaduck
+ */
 #include "Card.hpp"
+
+// Standard Library includes
+
+// External Library includes
+
+// Current Library includes
+#include "API-URLS.hpp"
+#include "Query.hpp"
 
 namespace pokemon_tcg_sdk {
     std::string Ability::to_string(){
@@ -367,13 +382,14 @@ namespace pokemon_tcg_sdk {
         json["value"] = weakness.value;
     }
 
-    std::vector<Card> Card::all(API* api, std::string orderBy, std::string select){
-        return Query::all<Card>(api, POKEMON_TCG_SDK_CARDS_URL, orderBy, select);
+    std::vector<Card> Card::all(std::string orderBy, std::string select){
+        return Query::all<Card>(POKEMON_TCG_SDK_CARDS_URL, orderBy, select);
     }
 
-    Card Card::find(API* api, std::string id){
+    Card Card::find(std::string id){
+
         Card ret;
-        nlohmann::json resp = Query::find(api, POKEMON_TCG_SDK_CARDS_URL, id);
+        nlohmann::json resp = Query::find(POKEMON_TCG_SDK_CARDS_URL, id);
         try {
             if (!resp.is_null()){
                 nlohmann::json data = resp.at("data");
@@ -385,12 +401,12 @@ namespace pokemon_tcg_sdk {
         return ret;
     }
 
-    std::vector<Card> Card::where(API* api, std::string query, std::string orderBy, std::string select){
-        return Query::where<Card>(api, query, POKEMON_TCG_SDK_CARDS_URL, orderBy, select);
+    std::vector<Card> Card::where(std::string query, std::string orderBy, std::string select){
+        return Query::where<Card>(query, POKEMON_TCG_SDK_CARDS_URL, orderBy, select);
     }
 
-    std::vector<Card> Card::where(API* api, nlohmann::json query, std::string orderBy, std::string select){
-        return Query::where<Card>(api, query, POKEMON_TCG_SDK_CARDS_URL, orderBy, select);
+    std::vector<Card> Card::where(nlohmann::json query, std::string orderBy, std::string select){
+        return Query::where<Card>(query, POKEMON_TCG_SDK_CARDS_URL, orderBy, select);
     }
 
     std::string Card::getID(){

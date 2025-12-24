@@ -8,12 +8,14 @@
 #ifndef __RARITIES_HPP__
 #define __RARITIES_HPP__
 
-#include <nlohmann/json.hpp>
+// Standard Library includes
 #include <string>
 #include <vector>
 
-#include <pokemon-tcg-sdk-cpp/api/URLS.hpp>
-#include <pokemon-tcg-sdk-cpp/Api.hpp>
+// External Library includes
+
+// Current Library includes
+
 
 namespace pokemon_tcg_sdk {
 

@@ -8,9 +8,13 @@
 #ifndef __TYPES_HPP__
 #define __TYPES_HPP__
 
-#include <nlohmann/json.hpp>
+// Standard Library includes
 #include <string>
 #include <vector>
+
+// External Library includes
+
+// Current Library includes
 
 namespace pokemon_tcg_sdk {
 

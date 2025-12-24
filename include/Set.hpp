@@ -6,12 +6,14 @@
 #ifndef __SET_HPP__
 #define __SET_HPP__
 
-#include <nlohmann/json.hpp>
+// Standard Library includes
 #include <string>
 
-#include <pokemon-tcg-sdk-cpp/Legalities.hpp>
-#include <pokemon-tcg-sdk-cpp/api/Query.hpp>
-#include <pokemon-tcg-sdk-cpp/api/URLS.hpp>
+// External Library includes
+#include <nlohmann/json.hpp>
+
+// Current Library includes
+#include "Legalities.hpp"
 
 namespace pokemon_tcg_sdk {
 

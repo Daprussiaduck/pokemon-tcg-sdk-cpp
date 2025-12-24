@@ -1,4 +1,17 @@
+/**
+ * @file Set.cpp
+ * 
+ * @brief This file contains the function definitions for the Set
+ * 
+ * @author Daprussiaduck
+ */
 #include "Set.hpp"
+
+// Standard Library includes
+
+// External Library includes
+
+// Current Library includes
 
 namespace pokemon_tcg_sdk {
     std::string SetImages::to_string(bool card){
@@ -22,11 +35,13 @@ namespace pokemon_tcg_sdk {
         json["logo"] = setImages.logo;
     }
 
-    std::vector<Set> Set::all(API* api, std::string orderBy, std::string select){
+    std::vector<Set> Set::all(std::string orderBy, std::string select){
+        // TODO: cpr
         return Query::all<Set>(api, POKEMON_TCG_SDK_SETS_URL, orderBy, select);
     }
 
-    Set Set::find(API* api, std::string id){
+    Set Set::find(std::string id){
+        // TODO: cpr
         Set ret;
         nlohmann::json resp = Query::find(api, POKEMON_TCG_SDK_SETS_URL, id);
         try {
@@ -40,11 +55,13 @@ namespace pokemon_tcg_sdk {
         return ret;
     }
 
-    std::vector<Set> Set::where(API* api, std::string query, std::string orderBy, std::string select){
+    std::vector<Set> Set::where(std::string query, std::string orderBy, std::string select){
+        // TODO: cpr
         return Query::where<Set>(api, query, POKEMON_TCG_SDK_CARDS_URL, orderBy, select);
     }
 
-    std::vector<Set> Set::where(API* api, nlohmann::json query, std::string orderBy, std::string select){
+    std::vector<Set> Set::where(nlohmann::json query, std::string orderBy, std::string select){
+        // TODO: cpr
         return Query::where<Set>(api, query, POKEMON_TCG_SDK_CARDS_URL, orderBy, select);
     }
 

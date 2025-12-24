@@ -8,8 +8,13 @@
 #ifndef __SUPERTYPES_HPP__
 #define __SUPERTYPES_HPP__
 
+// Standard Library includes
 #include <string>
 #include <vector>
+
+// External Library includes
+
+// Current Library includes
 
 namespace pokemon_tcg_sdk {
     

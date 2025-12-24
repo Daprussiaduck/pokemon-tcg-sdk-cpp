@@ -16,17 +16,14 @@ include(FetchContent)
 FetchContent_Declare(json URL https://github.com/nlohmann/json/releases/download/v3.12.0/json.tar.xz)
 FetchContent_MakeAvailable(json)
 
-FetchContent_Declare(cpr GIT_REPOSITORY https://github.com/libcpr/cpr.git GIT_TAG 1.12.0)
+FetchContent_Declare(cpr GIT_REPOSITORY https://github.com/libcpr/cpr.git GIT_TAG 1.14.1)
 FetchContent_MakeAvailable(cpr)
-
-find_package(CURL REQUIRED)
 
 # Variable for SRC_DIR to reference later
 set(SRC_DIR ${CMAKE_SOURCE_DIR}/src)
 
 # add Library target
 add_library(${PROJECT_NAME} SHARED 
-    ${SRC_DIR}/pokemon-tcg-sdk.cpp
     ${SRC_DIR}/Card.cpp
     ${SRC_DIR}/Legalities.cpp
     ${SRC_DIR}/Rarities.cpp
